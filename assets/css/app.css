@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap");
+
+/* Base */
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+::selection {
+  color: #fff;
+  /* background: ; */
+}
+
+body {
+  color: #111;
+  scroll-behavior: smooth;
+  background: #f6f6f6;
+  font-family: "Open Sans", Roboto, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+}
+/* Helper Classes */
+._flex {
+  display: flex;
+  align-items: center;
+}
+._flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._grid {
+  display: grid;
+  align-items: center;
+}
+._hide {
+  display: none;
+}
+.nonScroll {
+  overflow: hidden;
+}
+
+/* App */
+.sidebar {
+  width: 50%;
+  height: 100vh;
+  max-width: 280px;
+  min-height: 580px;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  background: #242625;
+}
+.sheader {
+  color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+.sheader p {
+  font-weight: 300;
+}
+
+.searchForm input {
+  width: 100%;
+  padding: 10px 16px;
+  background: #424444;
+  border: none;
+  border-radius: 12px;
+  color: #f6f6f6;
+  margin: 16px 0 12px;
+}
+.sidebar .nav_item.active {
+  background: #f6f6f6;
+  border-radius: 12px;
+}
+.sidebar .nav_item.active a {
+  color: #242625;
+}
+.sidebar .nav_item {
+  padding: 8px;
+  margin-bottom: 5px;
+}
+.sidebar .nav_item a {
+  color: #f6f6f6;
+}
+.sidebar .nav_item img {
+  margin-right: 12px;
+  width: 22px;
+}
+
+.sfooter {
+  position: absolute;
+  bottom: 8px;
+  width: 96%;
+}
+.sfooter .nb {
+  padding: 6px;
+  font-size: 13px;
+  color: #f6f6f6;
+}
+
+.btn {
+  color: #ffffff;
+  display: block;
+  padding: 8px 30px;
+  background: #2d2b2c;
+  border-radius: 15px;
+}
+
+/* Main */
+main h2 {
+  font-size: 30px;
+}
+
+#color-calendar {
+  transform: scale(1.15);
+  padding: 36px 0;
+}
+.color-calendar.basic {
+  margin: auto;
+}
+/* .color-calendar.basic .calendar__weekday {
+  color: #000 !important;
+  opacity: 1 !important;
+}
+.color-calendar .calendar__days .calendar__day-text {
+  opacity: 0.8;
+  font-weight: 500;
+}
+*/
+/* .color-calendar.basic .calendar__days .calendar__day-other {
+  opacity: 0.1 !important;
+} */
+
+._card {
+  padding: 16px 12px;
+  text-align: center;
+  background: rgba(110, 161, 68, 0.35);
+  border-radius: 35px;
+  max-width: 360px;
+  margin-bottom: 18px;
+}
+._card span {
+  font-size: 30px;
+  font-weight: 500;
+}
+._card h5 {
+  font-size: 30px;
+  padding-bottom: 0;
+  /* color: #242625; */
+}
+._card p {
+  font-weight: 500;
+}
+
+.colDetails {
+  border-left: 1px solid #000;
+}
+
+.cornImg {
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+.cornImg h5 {
+  font-weight: bold;
+  font-size: 32px;
+  padding: 6px;
+}
