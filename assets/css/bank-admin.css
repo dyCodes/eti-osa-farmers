@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap");
+
+/* Base */
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+::selection {
+  color: #fff;
+  /* background: ; */
+}
+
+body {
+  color: #111;
+  scroll-behavior: smooth;
+  background: #fff;
+  font-family: "Open Sans", Roboto, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+}
+/* Helper Classes */
+._flex {
+  display: flex;
+  align-items: center;
+}
+._flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._grid {
+  display: grid;
+  align-items: center;
+}
+._hide {
+  display: none;
+}
+.nonScroll {
+  overflow: hidden;
+}
+
+/* App */
+.sidebar {
+  width: 50%;
+  height: 100vh;
+  max-width: 280px;
+  min-height: 580px;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+}
+.sheader {
+  color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+.sheader p {
+  font-weight: 300;
+}
+
+.sidebar .nav_item.active {
+  background: #f6f6f6;
+  border-radius: 12px;
+}
+.sidebar .nav_item.active a {
+  color: #242625;
+}
+.sidebar .nav_item {
+  padding: 8px;
+  margin-bottom: 5px;
+}
+.sidebar .nav_item a {
+  color: #f6f6f6;
+}
+.sidebar .nav_item img {
+  margin-right: 12px;
+  width: 22px;
+}
+
+.sfooter {
+  position: absolute;
+  bottom: 8px;
+  width: 96%;
+}
+
+/* Main */
+main h2 {
+  font-size: 30px;
+  padding: 12px;
+}
+
+/* Responsive CSS */
+@media screen and (min-width: 1280px) {
+  #color-calendar {
+    transform: scale(1.16);
+    padding: 60px 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .colDetails {
+    border-left: 1px solid #000;
+  }
+  .btn {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    width: fit-content;
+  }
+}
