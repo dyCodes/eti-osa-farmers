@@ -270,46 +270,80 @@
 		</main>
 	</div>
 
-
 	<!-- Modal -->
 	<div class="modal fade" id="collateralModal" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<!-- collateral -->
+			<div id="collateral" class="modal-content">
 				<div class="modal-body">
 					<form action="">
 						<div class="mb-3">
-							<label for="name1" class="form-label">Representatives name</label>
-							<input type="text" class="form-control" id="name1">
+							<label class="form-label">Representatives name</label>
+							<input type="text" class="form-control" id="name1" value="Michael Eziamaka">
 						</div>
 
 						<div class="mb-3">
-							<label for="name1" class="form-label">Business Name</label>
-							<input type="text" class="form-control" id="name1">
+							<label class="form-label">Business Name</label>
+							<input type="text" class="form-control" id="name1" value="Eti-osa Farmers">
 						</div>
 
 						<div class="mb-3">
-							<label for="name1" class="form-label">Store location</label>
-							<input type="text" class="form-control" id="name1">
+							<label class="form-label">Store location</label>
+							<input type="text" class="form-control" id="location" value="Tyran warehouse , 22 ikeja street, lagos.">
 						</div>
 
 						<div class="row">
 							<div class="col-12 col-md-6 mb-3">
-								<label for="name1" class="form-label">Quantity</label>
-								<input type="text" class="form-control" id="name1">
+								<label class="form-label">Quantity</label>
+								<input type="text" class="form-control" id="quan" value="2500kg">
 							</div>
 
 							<div class="col-12 col-md-6 mb-3">
-								<label for="name1" class="form-label">Estimated value</label>
-								<input type="text" class="form-control" id="name1">
+								<label class="form-label">Estimated value</label>
+								<input type="text" class="form-control" id="value" value="N850,000">
 							</div>
 						</div>
-
 
 					</form>
 				</div>
 				<div class="modal-footer flex-nowrap border-0 justify-content-between">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-success">Transfer ownership</button>
+					<button type="button" class="btn btn-success modalBtn" data-next="otp">Transfer ownership</button>
+				</div>
+			</div>
+
+			<!-- OTP -->
+			<div id="otp" class="d-none modal-content py-5">
+				<div class="modal-body mb-2">
+					<label class="form-label">Enter OTP</label>
+					<form class="digit-group _flex justify-content-center" data-group-name="digits" data-autosubmit="false"
+						autocomplete="off">
+						<input type="text" id="digit-1" name="digit-1" data-next="digit-2" />
+						<input type="text" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" />
+						<input type="text" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" />
+						<span class="splitter">&ndash;</span>
+						<input type="text" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" />
+						<input type="text" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" />
+						<input type="text" id="digit-6" name="digit-6" data-previous="digit-5" />
+					</form>
+				</div>
+				<div class="modal-footer border-0 justify-content-center">
+					<button type="button" class="btn btn-success modalBtn" data-next="successModal"
+						style="font-size: 17px;">Enter</button>
+				</div>
+			</div>
+
+			<!-- Success -->
+			<div id="successModal" class="d-none modal-content py-4">
+				<div class="modal-body text-center">
+					<img src="./assets/img/icons/check.png" alt="" class="icon">
+					<h6 class="fs-5 mt-4">Success</h6>
+					<p class="text-black-50">Ownership successully trasnferred</p>
+				</div>
+
+				<div class="modal-footer border-0 mb-3 justify-content-center">
+					<button type="button" class="btn btn-success successModalBtn" data-bs-dismiss="modal" style="font-size: 17px;"
+						data-next="collateral">Back</button>
 				</div>
 			</div>
 		</div>

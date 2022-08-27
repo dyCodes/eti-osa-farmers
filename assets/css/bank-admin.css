@@ -158,18 +158,17 @@ main h2 {
 }
 .searchCollateral {
   width: 100%;
-  /* max-width: 840px; */
-  /* margin-left: 3rem; */
 }
 
+/* Modal */
 .modal-content input {
   border: 0;
-  background: #eff0f3 !important;
+  background: #fafbfc !important;
   border-radius: 10px;
-  padding: 12px;
+  padding: 12px 20px;
 }
 .modal-content label {
-  color: #828893;
+  color: #a2a7b1;
   font-weight: 400;
 }
 
@@ -183,7 +182,36 @@ main h2 {
   border: 0;
   border-radius: 20px;
 }
+/* OTP */
+#otp {
+  text-align: center;
+}
+#otp label {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.digit-group input {
+  width: 48px;
+  height: 50px;
+  /* background: #ffffff; */
+  border: 1px solid #d0d5dd;
+  box-shadow: 0px 0.6px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 6px;
+  line-height: 50px;
+  font-size: 24px;
+  color: #d0d5dd;
+  text-align: center;
+  padding: 0;
+  margin: 0 8px;
+}
 
+.digit-group .splitter {
+  color: #d0d5dd;
+  padding: 0 12px;
+  font-size: 24px;
+}
+
+/*  */
 table.table h6 {
   color: #101828;
   font-size: 15px;
@@ -209,6 +237,7 @@ table.table th {
   text-transform: capitalize;
   border-bottom: 1px solid #eaecf0 !important;
   font-size: 15px;
+  font-weight: 500;
 }
 .table span {
   font-size: 14px;
@@ -239,7 +268,7 @@ table.table th {
   padding: 8px 14px;
   margin: 0 8px;
   border-radius: 8px !important;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 /*  */
