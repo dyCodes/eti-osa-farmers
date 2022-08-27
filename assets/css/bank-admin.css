@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lato:wght@400;700&display=swap");
 
 /* Base */
 * {
@@ -63,15 +63,10 @@ input:focus {
   top: 0;
 }
 .sheader {
-  color: #f6f6f6;
-  display: flex;
-  align-items: center;
   margin-top: 6px;
   margin-bottom: 4rem;
 }
-.sheader p {
-  font-weight: 300;
-}
+
 .sidebar .nav_item.active {
   background: #ffffff;
   border: 1px solid #efeeeb;
@@ -169,7 +164,7 @@ main h2 {
 
 .modal-content input {
   border: 0;
-  background: #eff0f3;
+  background: #eff0f3 !important;
   border-radius: 10px;
   padding: 12px;
 }
@@ -197,8 +192,10 @@ table.table {
   color: #667085;
   font-size: 15px;
   margin: 5rem 0;
-  border-radius: 8px;
-  border: 1px solid #eaecf0;
+  border-radius: 6px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #eaecf0;
+  font-family: "Inter", sans-serif;
 }
 table.table th:first-child {
   padding-left: 18px !important;
@@ -213,10 +210,13 @@ table.table th {
   border-bottom: 1px solid #eaecf0 !important;
   font-size: 15px;
 }
-
+.table span {
+  font-size: 14px;
+}
 .table .badge {
   padding: 5px 16px;
   border-radius: 16px;
+  font-weight: 500;
 }
 .pagination .page-link.active {
   color: #344054;
