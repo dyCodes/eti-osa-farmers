@@ -4,6 +4,8 @@ $(function () {
   $(".collateralForm form").submit(function (e) {
     e.preventDefault();
 
+    $('.collateralForm button.btn').html('<div class="spinner-border spinner-border-sm text-light" role="status"><span class="visually-hidden">Loading...</span></div>');
+
     var settings = {
       url: "https://grainreceipt.herokuapp.com/api/collateral",
       method: "POST",
@@ -26,13 +28,16 @@ $(function () {
       // Show modal
       myModal.show();
       // Update fields
+      let issuanceDate = res.issuanceDate.replace('(Coordinated Universal Time)', '');
       $(".modal #quantity").val(settings.data.quantity);
       $(".modal #cropType").val(settings.data.cropType);
       $(".modal #condition").val(settings.data.condition);
       $(".modal #phone").val(settings.data.farmerPhoneNumber);
       $(".modal #farmer_name").val(settings.data.farmerName);
       $(".modal #collateral_id").val(res.collateralId);
-      $(".modal #issuance_d").val(res.issuanceDate);
+      $(".modal #issuance_d").val(issuanceDate);
+
+      $('.collateralForm button.btn').html('Create');
     });
   });
 

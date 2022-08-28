@@ -70,26 +70,27 @@
 
         <!-- collateral -->
         <div class="collateralForm px-5">
-          <form action="" class="py-5 px-5 mx-4">
+          <form action="" class="py-5 px-5 mx-auto">
             <div class="mb-3">
               <label class="form-label">Representatives name</label>
-              <input type="text" class="form-control" id="farmer_name" value="Michael Eziamaka">
+              <input type="text" class="form-control" id="farmer_name" required>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Business Name</label>
-              <input type="text" class="form-control" id="business_name" value="Eti-osa Farmers">
+              <input type="text" class="form-control" id="business_name" required>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Phone number</label>
-              <input type="text" class="form-control" id="phone" value="+23480374837448">
+              <input type="text" class="form-control" id="phone" required>
             </div>
 
             <div class="row">
               <div class="col-12 col-md-6 mb-3">
                 <label class="form-label">Bank</label>
-                <select id="bank" class="form-control">
+                <select id="bank" class="form-select" required>
+                  <option value="">---</option>
                   <option value="UBA">UBA</option>
                   <option value="WEMA">WEMA Bank</option>
                   <option value="First">First Bank</option>
@@ -99,19 +100,20 @@
 
               <div class="col-12 col-md-6 mb-3">
                 <label class="form-label">Account number</label>
-                <input type="text" class="form-control" id="account_no" value="2030203020">
+                <input type="text" class="form-control" id="account_no" required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-4 mb-3">
                 <label class="form-label">Crop type</label>
-                <input type="text" class="form-control" id="cropType" value="Corn">
+                <input type="text" class="form-control" id="cropType" required>
               </div>
 
               <div class="col-4 mb-3">
                 <label class="form-label">Condition</label>
-                <select id="condition" class="form-control">
+                <select id="condition" class="form-select" required>
+                  <option value="">---</option>
                   <option value="Okay">Okay</option>
                   <option value="Good">Good</option>
                   <option value="Great">Great</option>
@@ -120,7 +122,7 @@
 
               <div class="col-4 mb-3">
                 <label class="form-label">Quantity</label>
-                <input type="text" class="form-control" id="quantity" value="50">
+                <input type="number" class="form-control" id="quantity" required>
               </div>
             </div>
 
@@ -136,45 +138,43 @@
   <div class="modal fade" id="CreateCollateral" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <!-- collateral -->
-      <div class="modal-content">
+      <div class="modal-content py-2">
         <div class="modal-body">
           <form action="" class="">
             <h5 class="mb-3 text-center">Farmer's details</h5>
-
             <div class="mb-3">
               <label class="form-label">Representatives name</label>
-              <input type="text" class="form-control" readonly id="farmer_name" value="Michael Eziamaka">
+              <input type="text" class="form-control" readonly id="farmer_name">
             </div>
 
             <div class="mb-3">
               <label class="form-label">Collateral ID </label>
-              <input type="text" class="form-control" readonly id="collateral_id" value="37632">
+              <input type="text" class="form-control" readonly id="collateral_id">
             </div>
 
             <div class="mb-3">
               <label class="form-label">Phone number</label>
-              <input type="text" class="form-control" readonly id="phone" value="+23480374837448">
+              <input type="text" class="form-control" readonly id="phone">
             </div>
-
             <div class="mb-3">
               <label class="form-label">Issuance date</label>
-              <input type="text" class="form-control" readonly id="issuance_d" value="Aug 27, 2022 - 22:10:06">
+              <input type="text" class="form-control" readonly id="issuance_d">
             </div>
 
             <div class="row">
               <div class="col-4 mb-3">
                 <label class="form-label">Crop type</label>
-                <input type="text" class="form-control" readonly id="cropType" value="Corn">
+                <input type="text" class="form-control" readonly id="cropType">
               </div>
 
               <div class="col-4 mb-3">
                 <label class="form-label">Condition</label>
-                <input type="text" class="form-control" readonly id="condition" value="Okay">
+                <input type="text" class="form-control" readonly id="condition">
               </div>
 
               <div class="col-4 mb-0">
                 <label class="form-label">Quantity</label>
-                <input type="text" class="form-control" readonly id="quantity" value="50">
+                <input type="text" class="form-control" readonly id="quantity">
               </div>
             </div>
           </form>
