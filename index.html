@@ -5,147 +5,188 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eti Osa Farmers</title>
+  <title>Dashoboard - Bank Admin</title>
   <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
-  <!-- Vendor CSS -->
   <link href="./assets/vendor/bootstrap.min.css" rel="stylesheet" />
-  <!-- <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" /> -->
-  <link rel="stylesheet" href="./assets/vendor/calendar/theme-basic.css">
-  <link rel="stylesheet" href="./assets/vendor/calendar/theme-glass.css">
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="./assets/css/app.css">
 </head>
 
 <body>
-  <div class="app d-flex">
+  <div class="app px-4 d-flex">
     <aside class="sidebar d-none d-md-block">
-      <header class="sheader">
-        <img src="./assets/img/logo.png" alt="Eti Osa Logo" class="logo">
-        <div class="ms-2">
-          <p class="fw-bolder mb-1">Eti-Osa Farmers</p>
-          <p style="font-size: 13px;">etiosafarmersorg@gmail.com</p>
-        </div>
-        <h4></h4>
+      <header class="sheader pt-2">
+        <img src="./assets/img/logo.png" alt="" class="logo">
       </header>
 
-      <div class="searchForm my-3">
-        <input type="text" placeholder="search...">
-      </div>
-
       <nav>
-        <li class="nav_item">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/dashboard.png" alt="">
+        <li class="nav_item active">
+          <a href="#" class="_flex">
+            <img src="./assets/img/icons/dashboard-bank.svg" alt="">
             <span>Dashboard</span>
           </a>
         </li>
 
-        <li class="nav_item active">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/Collateral.png" alt="">
-            <span>Collateral</span>
-          </a>
-        </li>
-
         <li class="nav_item">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/LoanOffers.png" alt="" style="width: 14px;margin-right: 20px;">
-            <span>Loan offers</span>
-          </a>
-        </li>
-
-        <li class="nav_item">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/notif.png" alt="">
-            <span>Notifications</span>
-          </a>
-        </li>
-
-        <li class="nav_item">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/DebitCard.png" alt="">
-            <span>Collateral I.D</span>
-          </a>
-        </li>
-
-        <li class="nav_item">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/help.png" alt="">
-            <span>Get Help</span>
-          </a>
-        </li>
-
-        <li class="nav_item">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/Settings.png" alt="">
-            <span>Settings</span>
-          </a>
-        </li>
-
-        <li class="nav_item">
-          <a href="/fdff" class="_flex">
-            <img src="./assets/img/icons/logout.png" alt="" style="width: 18px;margin-right: 16px;">
-            <span>Logout</span>
+          <a href="#" class="_flex">
+            <img src="./assets/img/icons/track.svg" alt="">
+            <span>Database</span>
           </a>
         </li>
       </nav>
 
       <footer class="sfooter">
-        <p class="nb">N.B: Collateral I.D will only be assigned once grains have been inspected,verified and stored by
-          approved warehouses
-        </p>
+        <div class="_flex justify-content-between">
+          <div class="profile _flex">
+            <img src="./assets/img/photo.png" alt="">
+            <h6 class="m-0 ms-3 fs-5">Michael</h6>
+          </div>
+          <img src="./assets/img/icons/dots.png" alt="">
+        </div>
       </footer>
     </aside>
 
-    <main class="w-100 px-3">
-      <div class="row flex-column-reverse flex-lg-row">
-        <div class="pickDate col-12 col-lg-7 position-relative">
-          <h2 class="text-center">Book your grain drop- off/inspection</h2>
+    <main class="w-100 pt-2 ps-4">
+      <div class="header _flex p-2 justify-content-between">
+        <h2>Good Morning, Michael !</h2>
+        <div class="_flex">
+          <div class="searchForm">
+            <input type="text" placeholder="Search...">
+            <img class="sIcon" src="./assets/img/icons/search-g.svg" alt="">
+          </div>
 
-          <div id="color-calendar" class="_flex p-2 my-5"></div>
-
-          <button class="btn btn-dark mx-auto">SUBMIT</button>
-        </div>
-
-        <div class="colDetails col-12 col-lg-5 mb-5 mb-lg-0">
-          <h2 class="text-center">Chose your grain collateral</h2>
-          <div class="content px-3 px-md-5">
-            <div class="cornImg">
-              <img src="./assets/img/corn-image.png" alt="" class="d-block px-5 mx-auto">
-              <h5 class="text-center">Corn</h5>
-            </div>
-
-            <div class="_card mx-auto">
-              <h5>Min. Quantity Requirement</h5>
-              <span>&ge; 2500kg</span>
-            </div>
-
-            <div class="_card mx-auto">
-              <h5>Min. Quality Requirement</h5>
-
-              <p>Other Colored Grains .3% max</p>
-              <p>Foreign Matter .2% max </p>
-              <p>Pest Damage . 7% max</p>
-              <p>Free From Live Insect Infestation . </p>
-            </div>
-
-            <div class="selectBtn _flex">
-              <div class="sbtn">
-                <span>&laquo;</span>
-              </div>
-              <p>Select Grain</p>
-              <div class="sbtn">
-                <span>&raquo;</span>
-              </div>
-            </div>
+          <div class="notifyBtn">
+            <img src="./assets/img/icons/mi_notification.png" alt="">
           </div>
         </div>
       </div>
+
+      <div class="container">
+        <div class="searchCollateral input-group">
+          <img class="sIcon" src="./assets/img/icons/search.svg" alt="">
+          <input type="text" placeholder="Search collateral ID" class="form-control">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#CreateCollateral">Find</button>
+        </div>
+
+        <!-- collateral -->
+        <div class="collateralForm px-5">
+          <form action="" class="py-5 px-5 mx-4">
+            <div class="mb-3">
+              <label class="form-label">Representatives name</label>
+              <input type="text" class="form-control" id="farmer_name" value="Michael Eziamaka">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Business Name</label>
+              <input type="text" class="form-control" id="business_name" value="Eti-osa Farmers">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Phone number</label>
+              <input type="text" class="form-control" id="phone" value="+23480374837448">
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label class="form-label">Bank</label>
+                <select id="bank" class="form-control">
+                  <option value="UBA">UBA</option>
+                  <option value="WEMA">WEMA Bank</option>
+                  <option value="First">First Bank</option>
+                  <option value="Access">Access Bank</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+                <label class="form-label">Account number</label>
+                <input type="text" class="form-control" id="account_no" value="2030203020">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4 mb-3">
+                <label class="form-label">Crop type</label>
+                <input type="text" class="form-control" id="cropType" value="Corn">
+              </div>
+
+              <div class="col-4 mb-3">
+                <label class="form-label">Condition</label>
+                <select id="condition" class="form-control">
+                  <option value="Okay">Okay</option>
+                  <option value="Good">Good</option>
+                  <option value="Great">Great</option>
+                </select>
+              </div>
+
+              <div class="col-4 mb-3">
+                <label class="form-label">Quantity</label>
+                <input type="text" class="form-control" id="quantity" value="50">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success mt-4 w-100">Create</button>
+          </form>
+        </div>
+
+      </div>
     </main>
   </div>
-  <script src="./assets/vendor/jquery-3.2.1.min.js"></script>
-  <script src="./assets/vendor/calendar/bundle.js"></script>
 
+  <!-- Modal -->
+  <div class="modal fade" id="CreateCollateral" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <!-- collateral -->
+      <div class="modal-content">
+        <div class="modal-body">
+          <form action="" class="">
+            <h5 class="mb-3 text-center">Farmer's details</h5>
+
+            <div class="mb-3">
+              <label class="form-label">Representatives name</label>
+              <input type="text" class="form-control" readonly id="farmer_name" value="Michael Eziamaka">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Collateral ID </label>
+              <input type="text" class="form-control" readonly id="collateral_id" value="37632">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Phone number</label>
+              <input type="text" class="form-control" readonly id="phone" value="+23480374837448">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Issuance date</label>
+              <input type="text" class="form-control" readonly id="issuance_d" value="Aug 27, 2022 - 22:10:06">
+            </div>
+
+            <div class="row">
+              <div class="col-4 mb-3">
+                <label class="form-label">Crop type</label>
+                <input type="text" class="form-control" readonly id="cropType" value="Corn">
+              </div>
+
+              <div class="col-4 mb-3">
+                <label class="form-label">Condition</label>
+                <input type="text" class="form-control" readonly id="condition" value="Okay">
+              </div>
+
+              <div class="col-4 mb-0">
+                <label class="form-label">Quantity</label>
+                <input type="text" class="form-control" readonly id="quantity" value="50">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-success w-75 mx-auto" data-bs-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/vendor/jquery-3.2.1.min.js"></script>
   <script src="./assets/vendor/bootstrap.min.js"></script>
   <script src="./assets/js/app.js"></script>
 </body>
