@@ -8,7 +8,7 @@
 	<title>Bank Admin - AccesBank</title>
 	<link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
 	<link href="./assets/vendor/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="./assets/css/bank-admin.css">
+	<link rel="stylesheet" href="./assets/css/app.css">
 </head>
 
 <body>
@@ -61,12 +61,12 @@
 			</div>
 
 			<div class="container">
-				<div class="searchCollateral input-group">
+				<form class="searchCollateral input-group">
 					<img class="sIcon" src="./assets/img/icons/search.svg" alt="">
-					<input type="text" placeholder="Search collateral ID" class="form-control">
-					<button type="button" class="btn btn-success" data-bs-toggle="modal"
-						data-bs-target="#collateralModal">Find</button>
-				</div>
+					<input type="text" placeholder="Search collateral ID" class="form-control" required>
+
+					<button type="submit" class="btn btn-success">Find</button>
+				</form>
 
 				<table class="table">
 					<thead>
@@ -106,7 +106,7 @@
 									</div>
 								</div>
 							</td>
-							<td><a href="#" data-bs-toggle="modal" data-bs-target="#collateralModal">View</a></td>
+							<td><a href="#">View</a></td>
 						</tr>
 
 						<tr>
@@ -271,36 +271,81 @@
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="collateralModal" tabindex="-1" aria-hidden="true">
+	<div class="modal fade" id="findCollateralModal" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog">
 			<!-- collateral -->
-			<div id="collateral" class="modal-content">
+			<div id="transferCollateral" class="modal-content">
 				<div class="modal-body">
 					<form action="">
 						<div class="mb-3">
 							<label class="form-label">Representatives name</label>
-							<input type="text" class="form-control" id="name1" value="Michael Eziamaka">
+							<input type="text" class="form-control" id="farmer_name" value="Michael Eziamaka" readonly>
 						</div>
 
 						<div class="mb-3">
 							<label class="form-label">Business Name</label>
-							<input type="text" class="form-control" id="name1" value="Eti-osa Farmers">
+							<input type="text" class="form-control" id="business_name" value="Eti-osa Farmers" readonly>
 						</div>
 
 						<div class="mb-3">
 							<label class="form-label">Store location</label>
-							<input type="text" class="form-control" id="location" value="Tyran warehouse , 22 ikeja street, lagos.">
+							<input type="text" class="form-control" id="location" value="Tyran warehouse , 22 ikeja street, lagos."
+								readonly>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Crop type</label>
+							<input type="text" class="form-control" id="cropType" value="Corn" readonly>
 						</div>
 
 						<div class="row">
 							<div class="col-12 col-md-6 mb-3">
 								<label class="form-label">Quantity</label>
-								<input type="text" class="form-control" id="quan" value="2500kg">
+								<input type="text" class="form-control" id="quantity" value="2500kg" readonly>
 							</div>
 
 							<div class="col-12 col-md-6 mb-3">
 								<label class="form-label">Estimated value</label>
-								<input type="text" class="form-control" id="value" value="N850,000">
+								<input type="text" class="form-control" id="estValue" value="N850,000" readonly>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer flex-nowrap border-0 justify-content-between">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-success collateralBtn">Transfer ownership</button>
+				</div>
+			</div>
+
+			<!-- calculate -->
+			<div id="calculateLoan" class="d-none modal-content">
+				<div class="modal-body">
+					<div class="text-center">
+						<h4>Calculate Loan</h4>
+						<p class="mb-5 text-black-50">Calculate loan amount based on collateral value</p>
+					</div>
+
+					<form action="">
+						<input type="hidden" value="Sterling" id="requestingBank">
+						<div class="mb-3">
+							<label class="form-label">Estimated collateral value</label>
+							<input type="text" class="form-control" id="value" value="850,000">
+						</div>
+
+						<div class="row">
+							<div class="col-12 col-md-6 mb-3">
+								<label class="form-label">Interest rate</label>
+								<input type="text" class="form-control" id="interestRate" value="10%">
+							</div>
+
+							<div class="col-12 col-md-6 mb-3">
+								<label class="form-label">Tenure</label>
+								<select id="tenure" class="form-select" required>
+									<option value="5">5 Months</option>
+									<option value="8">8 Months</option>
+									<option value="12">12 Months</option>
+								</select>
 							</div>
 						</div>
 
@@ -308,7 +353,24 @@
 				</div>
 				<div class="modal-footer flex-nowrap border-0 justify-content-between">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-success modalBtn" data-next="otp">Transfer ownership</button>
+					<button id="calculateLoanBtn" type="button" class="btn btn-success">Calculate Loan</button>
+				</div>
+			</div>
+
+			<!-- confirmLoan -->
+			<div id="confirmLoan" class="d-none modal-content">
+				<div class="modal-body">
+					<form action="">
+						<div class="mb-3">
+							<h4 class="mb-3 text-center">Loan amount</h4>
+							<input type="text" class="form-control" id="value" value="850,000">
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer flex-nowrap border-0 justify-content-between">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+					<button id="confirmLoanBtn" type="button" class="btn btn-success">Confirm</button>
 				</div>
 			</div>
 
