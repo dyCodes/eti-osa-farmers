@@ -2,5 +2,7 @@
 
 ## Built With
 
-- [Bootstrap 5](https://getbootstrap.com)
+- HTML
+- CSS
+- Bootstrap 5
 - jQuery
