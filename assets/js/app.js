@@ -1,29 +1,112 @@
 //
 
+function createCollateral() {
+  // Add loading state
+  $(".collateralForm button").html(
+    '<div class="spinner-border spinner-border-sm text-light" role="status"><span class="visually-hidden">Loading...</span></div>'
+  );
+
+  let reqData = {
+    quantity: $(".collateralForm #quantity").val(),
+    cropType: $(".collateralForm #cropType").val(),
+    condition: $(".collateralForm #condition").val(),
+    farmerPhoneNumber: $(".collateralForm #phone").val(),
+    farmerName: $(".collateralForm #farmer_name").val(),
+    businessName: $(".collateralForm #business_name").val(),
+    bankCode: $(".collateralForm #bank").val(),
+    accountNumber: $(".collateralForm #account_no").val(),
+  }
+
+  var settings = {
+    url: "https://grainreceipt.herokuapp.com/api/collateral",
+    method: "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    data: JSON.stringify(reqData)
+  };
+
+  // API call
+  $.ajax(settings).done(function (res) {
+    var myModal = new bootstrap.Modal(document.getElementById("CreateCollateral"));
+    myModal.show();
+    // Update fields
+    let issuanceDate = res.issuanceDate.replace(
+      "(Coordinated Universal Time)",
+      ""
+    );
+    $(".modal #quantity").val(res.quantity);
+    $(".modal #cropType").val(res.cropType);
+    $(".modal #condition").val(res.condition);
+    $(".modal #phone").val(res.farmerPhoneNumber);
+    $(".modal #farmer_name").val(res.farmerName);
+    $(".modal #collateral_id").val(res.collateralId);
+    $(".modal #issuance_d").val(issuanceDate);
+
+    $(".collateralForm button").html("Create");
+  });
+}
+
 function showNextModal(nextEL) {
   // hide all
   $("#findCollateralModal .modal-content").addClass("d-none");
   $(nextEL).removeClass("d-none");
 }
 
+function verifyOTP() {
+  let loanID = $(".mainForm #loanId").val();
+  let otpCode = $('#otp #OTPcode').val();
+
+  console.log(otpCode);
+  var settings = {
+    "url": "https://grainreceipt.herokuapp.com/api/loan/" + loanID + "/verify-otp",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "data": JSON.stringify({ "OTP": Number(otpCode) }),
+  };
+
+  $.ajax(settings).done(function (res) {
+    console.log(settings, res);
+    showNextModal("#successModal");
+  });
+}
+
+function confirmLoan() {
+  let loanID = $(".mainForm #loanId").val();
+  var settings = {
+    url: "https://grainreceipt.herokuapp.com/api/loan/" + loanID + "/confirm",
+    method: "POST",
+  };
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    showNextModal("#otp");
+  });
+}
+
 function calculateLoan() {
   let interestRate = $("#calculateLoan #interestRate").val();
-
+  let reqData = {
+    collateralId: Number($(".mainForm #collateral_id").val()),
+    interestRate: Number(interestRate.replace("%", "")),
+    tenure: Number($("#calculateLoan #tenure").val()),
+    requestingBank: $(".mainForm #bankCode").val(),
+  };
   var settings = {
     url: "https://grainreceipt.herokuapp.com/api/loan",
     method: "POST",
-    timeout: 0,
-    data: {
-      collateralId: $(".searchCollateral input").val(),
-      interestRate: interestRate.replace("%", ""),
-      tenure: $("#calculateLoan #tenure").val(),
-      requestingBank: $("#calculateLoan #requestingBank").val(),
+    "headers": {
+      "Content-Type": "application/json"
     },
+    data: JSON.stringify(reqData)
   };
-  console.log(settings);
 
-  $.ajax(settings).done(function (response) {
-    console.log(settings, response);
+  $.ajax(settings).done(function (res) {
+    console.log(settings, res);
+    $('.mainForm #loanId').val(res.loanId);
+    $('#confirmLoan #loanValue').val(res.loanValue);
     showNextModal("#confirmLoan");
   });
 }
@@ -36,113 +119,66 @@ function findCollateral() {
   $(".searchCollateral button").html(
     '<div class="spinner-border spinner-border-sm text-light" role="status"><span class="visually-hidden">Loading...</span></div>'
   );
-
   // Get collateral ID
   let cID = $(".searchCollateral input").val();
   let config = {
     url: "https://grainreceipt.herokuapp.com/api/collateral/" + cID,
     method: "GET",
-    timeout: 0,
   };
   // API call
   $.ajax(config).done(function (res) {
     console.log(config, "-----", res);
-
     myModal.show();
+    // Update fields
+    $(".mainForm #estValue").val('₦' + res.cropValue);
+    $(".mainForm #quantity").val(res.quantity + 'Kg');
+    $(".mainForm #cropType").val(res.cropType);
+    $(".mainForm #business_name").val(res.businessName);
+    $(".mainForm #farmer_name").val(res.farmerName);
+    // Hidden fields
+    $(".mainForm #collateral_id").val(cID);
+    $(".mainForm #bankCode").val(res.bankCode);
+    // Reset button
     $(".searchCollateral button").html("Find");
-    // Update fields
-    // $(".modal #cropType").val(settings.data.cropType);
-  });
-}
-
-function createCollateral() {
-  // Add loading state
-  $(".collateralForm button").html(
-    '<div class="spinner-border spinner-border-sm text-light" role="status"><span class="visually-hidden">Loading...</span></div>'
-  );
-
-  var settings = {
-    url: "https://grainreceipt.herokuapp.com/api/collateral",
-    method: "POST",
-    timeout: 0,
-    data: {
-      quantity: $(".collateralForm #quantity").val(),
-      cropType: $(".collateralForm #cropType").val(),
-      condition: $(".collateralForm #condition").val(),
-      farmerPhoneNumber: $(".collateralForm #phone").val(),
-      farmerName: $(".collateralForm #farmer_name").val(),
-      businessName: $(".collateralForm #business_name").val(),
-      bankCode: $(".collateralForm #bank").val(),
-      accountNumber: $(".collateralForm #account_no").val(),
-    },
-  };
-  // API call
-  $.ajax(settings).done(function (res) {
-    var myModal = new bootstrap.Modal(
-      document.getElementById("CreateCollateral")
-    );
-    console.log(res);
-    // Show modal
-    myModal.show();
-    // Update fields
-    let issuanceDate = res.issuanceDate.replace(
-      "(Coordinated Universal Time)",
-      ""
-    );
-    $(".modal #quantity").val(settings.data.quantity);
-    $(".modal #cropType").val(settings.data.cropType);
-    $(".modal #condition").val(settings.data.condition);
-    $(".modal #phone").val(settings.data.farmerPhoneNumber);
-    $(".modal #farmer_name").val(settings.data.farmerName);
-    $(".modal #collateral_id").val(res.collateralId);
-    $(".modal #issuance_d").val(issuanceDate);
-
-    $(".collateralForm button").html("Create");
   });
 }
 
 $(function () {
-  $(".collateralForm form").submit(function (e) {
+  // Disable all forms
+  $('body form').submit(function (e) {
     e.preventDefault();
+  });
+
+  // create Collateral
+  $(".collateralForm form").submit(function (e) {
     createCollateral();
   });
 
+  // Modal step 1
   $("form.searchCollateral").submit(function (e) {
-    e.preventDefault();
     findCollateral();
   });
 
-  // Modal step 1
+  // Modal step 2
   $("#transferCollateral .collateralBtn").click(function (e) {
+    let estValue = $(".mainForm #estValue").val();
+    $("#calculateLoan #estValue").val(estValue);
     showNextModal("#calculateLoan");
   });
 
-  // Modal step 2
-  $("#calculateLoanBtn").click(function (e) {
+  // Modal step 3
+  $('#calculateLoan form').submit(function (e) {
     calculateLoan();
   });
 
-  // Modal step 3
+  // Modal step 4
   $("#confirmLoanBtn").click(function (e) {
-    let loanID = $(".searchCollateral input").val();
-    var settings = {
-      url: "https://grainreceipt.herokuapp.com/api/loan/" + loanID + "/confirm",
-      method: "POST",
-      timeout: 0,
-    };
-
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-      showNextModal("#otp");
-    });
+    confirmLoan();
   });
 
-  $(".modal-footer .modalBtn").click(function (e) {
-    // e.preventDefault();
-    let nextEl = "#" + $(this).data("next");
-    console.log(nextEl);
-    $("#collateralModal .modal-content").addClass("d-none");
-    $(nextEl).removeClass("d-none");
+  // Modal step 5
+  $("#otp button").click(function (e) {
+    verifyOTP();
   });
 
   // Reset modal to step 1
@@ -182,6 +218,16 @@ $(function () {
             if (parent.data("autosubmit")) {
               parent.submit();
             }
+
+            let formInputs = $('.digit-group').serializeArray();
+            let OTPcode = '';
+
+            formInputs.forEach(el => {
+              // console.log(el.name, el.value);
+              OTPcode += el.value;
+            });
+            // console.log('otp: ', OTPcode);
+            $('#otp #OTPcode').val(OTPcode);
           }
         }
       });

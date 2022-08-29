@@ -63,7 +63,7 @@
 			<div class="container">
 				<form class="searchCollateral input-group">
 					<img class="sIcon" src="./assets/img/icons/search.svg" alt="">
-					<input type="text" placeholder="Search collateral ID" class="form-control" required>
+					<input type="text" placeholder="Search collateral ID" class="form-control" value="54658" required>
 
 					<button type="submit" class="btn btn-success">Find</button>
 				</form>
@@ -274,39 +274,43 @@
 	<div class="modal fade" id="findCollateralModal" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog">
 			<!-- collateral -->
-			<div id="transferCollateral" class="modal-content">
+			<div id="transferCollateral" class="mainForm modal-content">
 				<div class="modal-body">
 					<form action="">
 						<div class="mb-3">
 							<label class="form-label">Representatives name</label>
-							<input type="text" class="form-control" id="farmer_name" value="Michael Eziamaka" readonly>
+							<input type="text" class="form-control" id="farmer_name" readonly>
 						</div>
 
 						<div class="mb-3">
 							<label class="form-label">Business Name</label>
-							<input type="text" class="form-control" id="business_name" value="Eti-osa Farmers" readonly>
+							<input type="text" class="form-control" id="business_name" readonly>
 						</div>
 
-						<div class="mb-3">
+						<!-- <div class="mb-3">
 							<label class="form-label">Store location</label>
-							<input type="text" class="form-control" id="location" value="Tyran warehouse , 22 ikeja street, lagos."
-								readonly>
-						</div>
+							<input type="text" class="form-control" id="location" readonly>
+						</div> -->
 
 						<div class="mb-3">
 							<label class="form-label">Crop type</label>
-							<input type="text" class="form-control" id="cropType" value="Corn" readonly>
+							<input type="text" class="form-control" id="cropType" readonly>
 						</div>
+
+						<input type="hidden" id="collateral_id">
+						<input type="hidden" id="bankCode">
+						<input type="hidden" id="loanId">
+						<input type="hidden" id="loanValue">
 
 						<div class="row">
 							<div class="col-12 col-md-6 mb-3">
 								<label class="form-label">Quantity</label>
-								<input type="text" class="form-control" id="quantity" value="2500kg" readonly>
+								<input type="text" class="form-control" id="quantity" readonly>
 							</div>
 
 							<div class="col-12 col-md-6 mb-3">
 								<label class="form-label">Estimated value</label>
-								<input type="text" class="form-control" id="estValue" value="N850,000" readonly>
+								<input type="text" class="form-control" id="estValue" readonly>
 							</div>
 						</div>
 					</form>
@@ -320,28 +324,28 @@
 
 			<!-- calculate -->
 			<div id="calculateLoan" class="d-none modal-content">
-				<div class="modal-body">
-					<div class="text-center">
-						<h4>Calculate Loan</h4>
-						<p class="mb-5 text-black-50">Calculate loan amount based on collateral value</p>
-					</div>
+				<form action="">
+					<div class="modal-body">
+						<div class="text-center">
+							<h4>Calculate Loan</h4>
+							<p class="mb-5 text-black-50">Calculate loan amount based on collateral value</p>
+						</div>
 
-					<form action="">
-						<input type="hidden" value="Sterling" id="requestingBank">
 						<div class="mb-3">
 							<label class="form-label">Estimated collateral value</label>
-							<input type="text" class="form-control" id="value" value="850,000">
+							<input type="text" class="form-control" id="estValue" readonly>
 						</div>
 
 						<div class="row">
 							<div class="col-12 col-md-6 mb-3">
 								<label class="form-label">Interest rate</label>
-								<input type="text" class="form-control" id="interestRate" value="10%">
+								<input type="text" class="form-control" id="interestRate" required>
 							</div>
 
 							<div class="col-12 col-md-6 mb-3">
 								<label class="form-label">Tenure</label>
 								<select id="tenure" class="form-select" required>
+									<option value="">---</option>
 									<option value="5">5 Months</option>
 									<option value="8">8 Months</option>
 									<option value="12">12 Months</option>
@@ -349,12 +353,14 @@
 							</div>
 						</div>
 
-					</form>
-				</div>
-				<div class="modal-footer flex-nowrap border-0 justify-content-between">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					<button id="calculateLoanBtn" type="button" class="btn btn-success">Calculate Loan</button>
-				</div>
+					</div>
+
+					<div class="modal-footer flex-nowrap border-0 justify-content-between">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+						<button id="calculateLoanBtn" type="submit" class="btn btn-success">Calculate Loan</button>
+					</div>
+				</form>
+
 			</div>
 
 			<!-- confirmLoan -->
@@ -363,7 +369,7 @@
 					<form action="">
 						<div class="mb-3">
 							<h4 class="mb-3 text-center">Loan amount</h4>
-							<input type="text" class="form-control" id="value" value="850,000">
+							<input type="text" class="form-control" id="loanValue">
 						</div>
 					</form>
 				</div>
@@ -387,11 +393,13 @@
 						<input type="text" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" />
 						<input type="text" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" />
 						<input type="text" id="digit-6" name="digit-6" data-previous="digit-5" />
+						<!--  -->
 					</form>
+					<input type="hidden" id="OTPcode">
 				</div>
+
 				<div class="modal-footer border-0 justify-content-center">
-					<button type="button" class="btn btn-success modalBtn" data-next="successModal"
-						style="font-size: 17px;">Enter</button>
+					<button type="button" class="btn btn-success" style="font-size: 17px;">Enter</button>
 				</div>
 			</div>
 
