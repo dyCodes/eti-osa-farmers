@@ -67,10 +67,13 @@ function verifyOTP() {
     "data": JSON.stringify({ "OTP": Number(otpCode) }),
   };
 
-  $.ajax(settings).done(function (res) {
-    console.log(settings, res);
+  if (otpCode) {
     showNextModal("#successModal");
-  });
+  }
+
+  // $.ajax(settings).done(function (res) {
+  //   console.log(settings, res);
+  // });
 }
 
 function confirmLoan() {
@@ -106,7 +109,7 @@ function calculateLoan() {
   $.ajax(settings).done(function (res) {
     console.log(settings, res);
     $('.mainForm #loanId').val(res.loanId);
-    $('#confirmLoan #loanValue').val(res.loanValue);
+    $('#confirmLoan #loanValue').val('₦' + res.loanValue);
     showNextModal("#confirmLoan");
   });
 }
@@ -143,6 +146,7 @@ function findCollateral() {
   });
 }
 
+// Events
 $(function () {
   // Disable all forms
   $('body form').submit(function (e) {
@@ -181,6 +185,17 @@ $(function () {
     verifyOTP();
   });
 
+  // Last
+  $("#successModal button").click(function (e) {
+    // Clear form
+    $(".searchCollateral input").val("");
+    $('.digit-group input').val("");
+
+    setTimeout(() => {
+      showNextModal("#transferCollateral");
+    }, 1500);
+  });
+
   // Reset modal to step 1
   $(".modal-footer .successModalBtn").click(function (e) {
     setTimeout(() => {
@@ -215,18 +230,12 @@ $(function () {
           if (next.length) {
             $(next).select();
           } else {
-            if (parent.data("autosubmit")) {
-              parent.submit();
-            }
-
             let formInputs = $('.digit-group').serializeArray();
             let OTPcode = '';
-
             formInputs.forEach(el => {
               // console.log(el.name, el.value);
               OTPcode += el.value;
             });
-            // console.log('otp: ', OTPcode);
             $('#otp #OTPcode').val(OTPcode);
           }
         }
