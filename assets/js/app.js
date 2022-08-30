@@ -33,7 +33,7 @@ function createCollateral() {
       "(Coordinated Universal Time)",
       ""
     );
-    $(".modal #cropValue").val(res.cropValue);
+    $(".modal #cropValue").val('₦' + res.cropValue);
     $(".modal #quantity").val(res.quantity + "Kg");
     $(".modal #cropType").val(res.cropType);
     $(".modal #condition").val(res.condition);
