@@ -16,7 +16,6 @@ function createCollateral() {
     bankCode: $(".collateralForm #bank").val(),
     accountNumber: $(".collateralForm #account_no").val(),
   }
-
   var settings = {
     url: "https://grainreceipt.herokuapp.com/api/collateral",
     method: "POST",
@@ -25,7 +24,6 @@ function createCollateral() {
     },
     data: JSON.stringify(reqData)
   };
-
   // API call
   $.ajax(settings).done(function (res) {
     var myModal = new bootstrap.Modal(document.getElementById("CreateCollateral"));
@@ -35,7 +33,8 @@ function createCollateral() {
       "(Coordinated Universal Time)",
       ""
     );
-    $(".modal #quantity").val(res.quantity);
+    $(".modal #cropValue").val(res.cropValue);
+    $(".modal #quantity").val(res.quantity + "Kg");
     $(".modal #cropType").val(res.cropType);
     $(".modal #condition").val(res.condition);
     $(".modal #phone").val(res.farmerPhoneNumber);

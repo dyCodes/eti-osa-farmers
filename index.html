@@ -81,7 +81,7 @@
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Business Name</label>
+              <label class="form-label">Union name</label>
               <input type="text" class="form-control" id="business_name" required>
             </div>
 
@@ -126,7 +126,7 @@
 
               <div class="col-4 mb-3">
                 <label class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" required>
+                <input type="number" class="form-control" id="quantity" min="2000" required>
               </div>
             </div>
 
@@ -166,21 +166,27 @@
             </div>
 
             <div class="row">
-              <div class="col-4 mb-3">
+              <div class="col-6 mb-3">
                 <label class="form-label">Crop type</label>
                 <input type="text" class="form-control" readonly id="cropType">
               </div>
 
-              <div class="col-4 mb-3">
+              <div class="col-6 mb-3">
                 <label class="form-label">Condition</label>
                 <input type="text" class="form-control" readonly id="condition">
               </div>
 
-              <div class="col-4 mb-0">
+              <div class="col-6 mb-0">
                 <label class="form-label">Quantity</label>
                 <input type="text" class="form-control" readonly id="quantity">
               </div>
+
+              <div class="col-6 mb-0">
+                <label class="form-label">Estimated market value</label>
+                <input type="text" class="form-control" readonly id="cropValue">
+              </div>
             </div>
+
           </form>
         </div>
         <div class="modal-footer border-0">
